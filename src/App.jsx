@@ -338,6 +338,8 @@ export default function App() {
             <option value="Right brush head 1.stl">一刷頭(EB款式)</option>
             <option value="Right brush head 2.stl">二刷頭(EB款式)</option>
             <option value="Right brush head 3.stl">三刷頭(EB款式)</option>
+            <option value="R-IO-1.stl">一刷頭(IO款式)</option>
+            <option value="R-IO-2.stl">二刷頭(IO款式)</option>
           </select>
         </div>
 
@@ -367,6 +369,8 @@ export default function App() {
             <option value="left brush head 1.stl">一刷頭(EB款式)</option>
             <option value="left brush head 2.stl">二刷頭(EB款式)</option>
             <option value="left brush head 3.stl">三刷頭(EB款式)</option>
+            <option value="L-IO-1.stl">一刷頭(IO款式)</option>
+            <option value="L-IO-2.stl">二刷頭(IO款式)</option>
           </select>
         </div>
 
