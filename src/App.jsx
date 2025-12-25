@@ -4,6 +4,7 @@ import { Canvas, useLoader, useThree } from '@react-three/fiber';
 import { OrbitControls, Center, useProgress, Html, ContactShadows, Environment, Float } from '@react-three/drei';
 import { STLLoader } from 'three/examples/jsm/loaders/STLLoader.js';
 
+
 // --- 1. 樣式定義 (新增 Select 下拉選單樣式) ---
 const styles = {
   container: {
@@ -21,7 +22,7 @@ const styles = {
   },
   logoGroup: { display: 'flex', alignItems: 'center', gap: '12px' },
   logoIcon: {
-    width: '36px', height: '36px', background: 'linear-gradient(135deg, #6366f1, #8b5cf6)',
+    width: '36px', height: '36px', background: 'linear-gradient(135deg, #64748b, #8b5cf6)',
     borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center',
     color: 'white', fontSize: '18px', fontWeight: 'bold',
   },
@@ -37,18 +38,18 @@ const styles = {
   },
   sidebarSection: { display: 'flex', flexDirection: 'column', gap: '10px', paddingBottom: '16px', borderBottom: '1px solid rgba(0,0,0,0.05)' },
   sidebarTitle: { fontSize: '11px', fontWeight: '700', color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '4px' },
-  rangeInput: { width: '100%', cursor: 'pointer', accentColor: '#6366f1' },
+  rangeInput: { width: '100%', cursor: 'pointer', accentColor: '#64748b' },
   // 新增：Select 樣式
   selectInput: {
     width: '100%', padding: '10px 12px', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.8)',
     background: 'rgba(255,255,255,0.5)', color: '#334155', fontSize: '13px', fontWeight: '600',
     outline: 'none', cursor: 'pointer', appearance: 'none',
-    backgroundImage: 'url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%236366f1%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E")',
+    backgroundImage: 'url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%2364748b%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E")',
     backgroundRepeat: 'no-repeat', backgroundPosition: 'right 12px top 50%', backgroundSize: '10px auto',
   },
   numberBadge: {
     background: 'white', padding: '2px 8px', borderRadius: '6px',
-    fontSize: '12px', fontWeight: '700', color: '#6366f1',
+    fontSize: '12px', fontWeight: '700', color: '#64748b',
     boxShadow: '0 2px 4px rgba(99, 102, 241, 0.1)', minWidth: '20px', textAlign: 'center'
   },
 
@@ -85,7 +86,7 @@ const styles = {
 
 function Loader() {
   const { progress } = useProgress();
-  return <Html center><div style={{ color: '#6366f1', fontWeight: 'bold' }}>{Math.round(progress)}%</div></Html>;
+  return <Html center><div style={{ color: '#64748b', fontWeight: 'bold' }}>{Math.round(progress)}%</div></Html>;
 }
 
 // --- CAD Line (保持不變) ---
@@ -152,7 +153,7 @@ function AssemblyDimensions({ show, showLines, versionTrigger }) {
 
       {showLines && (
         <group>
-          <CADLine start={new THREE.Vector3(min.x, min.y, max.z)} end={new THREE.Vector3(max.x, min.y, max.z)} offset={gap} axis="x" label={size.x.toFixed(1)} color="#6366f1" />
+          <CADLine start={new THREE.Vector3(min.x, min.y, max.z)} end={new THREE.Vector3(max.x, min.y, max.z)} offset={gap} axis="x" label={size.x.toFixed(1)} color="#64748b" />
           <CADLine start={new THREE.Vector3(max.x, min.y, min.z)} end={new THREE.Vector3(max.x, max.y, min.z)} offset={gap} axis="y" label={size.y.toFixed(1)} color="#10b981" />
           <CADLine start={new THREE.Vector3(max.x, min.y, min.z)} end={new THREE.Vector3(max.x, min.y, max.z)} offset={gap} axis="z" label={size.z.toFixed(1)} color="#f43f5e" />
           <primitive object={new THREE.Box3Helper(new THREE.Box3(min, max), 'rgba(203, 213, 225, 0.4)')} />
@@ -221,7 +222,7 @@ export default function App() {
 
   // 3. 全局設定
   const [gap, setGap] = useState(0);
-  const [globalColor, setGlobalColor] = useState('#6366f1');
+  const [globalColor, setGlobalColor] = useState('#64748b');
   const [showDimensions, setShowDimensions] = useState(true);
   const [showLines, setShowLines] = useState(true);
 
@@ -313,13 +314,12 @@ export default function App() {
       )}
       <nav style={styles.navBar}>
         <div style={styles.logoGroup}>
-          <div style={styles.logoIcon}>0</div>
           <div style={styles.logoText}>參數牙刷架<span style={{ color: '#7f7f9aff' }}>Oral-B</span></div>
         </div>
         <div style={styles.controlsGroup}>
           <div style={styles.controlItem}><span style={styles.label}>顏色選擇</span><input type="color" value={globalColor} onChange={(e) => setGlobalColor(e.target.value)} style={styles.colorInput} /></div>
           <div style={styles.controlItem}><span style={styles.label}>尺寸顯示</span>
-            <div onClick={() => setShowDimensions(!showDimensions)} style={{ ...styles.toggleContainer, background: showDimensions ? '#6366f1' : '#cbd5e1' }}><div style={{ ...styles.toggleCircle, left: showDimensions ? '17px' : '3px' }}></div></div>
+            <div onClick={() => setShowDimensions(!showDimensions)} style={{ ...styles.toggleContainer, background: showDimensions ? '#64748b' : '#cbd5e1' }}><div style={{ ...styles.toggleCircle, left: showDimensions ? '17px' : '3px' }}></div></div>
           </div>
           <div style={styles.controlItem}><span style={styles.label}>標注線顯示</span>
             <div onClick={() => setShowLines(!showLines)} style={{ ...styles.toggleContainer, background: showLines ? '#8b5cf6' : '#cbd5e1' }}><div style={{ ...styles.toggleCircle, left: showLines ? '17px' : '3px' }}></div></div>
@@ -416,12 +416,12 @@ export default function App() {
       </Canvas>
 
       <div style={styles.bottomCard}>
-        <div style={{ ...styles.label, marginBottom: '8px', color: '#6366f1', fontSize: '12px' }}>
+        <div style={{ ...styles.label, marginBottom: '8px', color: '#64748b', fontSize: '12px' }}>
           操作說明
         </div>
 
         <div style={styles.instructionText}>
-          <span style={{ ...styles.dot, background: '#6366f1' }}></span>
+          <span style={{ ...styles.dot, background: '#64748b' }}></span>
           左鍵旋轉：查看 3D 模型細節
         </div>
 
