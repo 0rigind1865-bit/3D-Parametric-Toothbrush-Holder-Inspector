@@ -81,8 +81,44 @@ const styles = {
   label: { fontSize: '16px', fontWeight: '700', textTransform: 'uppercase', color: '#64748b' },
   colorInput: { width: '20px', height: '20px', border: '2px solid white', borderRadius: '50%', cursor: 'pointer' },
   toggleContainer: { width: '32px', height: '18px', borderRadius: '10px', position: 'relative', cursor: 'pointer', transition: 'background 0.3s' },
-  toggleCircle: { width: '12px', height: '12px', background: 'white', borderRadius: '50%', position: 'absolute', top: '3px', transition: 'left 0.3s' }
+  toggleCircle: { width: '12px', height: '12px', background: 'white', borderRadius: '50%', position: 'absolute', top: '3px', transition: 'left 0.3s' },
+  // 新增：頁腳樣式
+  footer: {
+    position: 'absolute',
+    left: '50%',
+    bottom: '16px',
+    transform: 'translateX(-50%)',
+    zIndex: 30,
+    background: 'rgba(255,255,255,0.88)',
+    backdropFilter: 'blur(8px)',
+    WebkitBackdropFilter: 'blur(8px)',
+    padding: '10px 16px',
+    borderRadius: '12px',
+    border: '1px solid rgba(0,0,0,0.06)',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '12px',
+    boxShadow: '0 6px 20px rgba(2,6,23,0.06)',
+    pointerEvents: 'auto',
+    fontSize: '13px',
+    color: '#334155',
+    fontWeight: 600,
+  },
+  footerLink: {
+    color: '#7c3aed',
+    textDecoration: 'none',
+    fontWeight: 800,
+    padding: '6px 10px',
+    borderRadius: '8px',
+    background: 'linear-gradient(90deg, rgba(124,58,237,0.08), rgba(99,102,241,0.06))'
+  },
+  footerSmall: {
+    fontSize: '11px',
+    color: '#64748b',
+    fontWeight: 500
+  }
 };
+
 
 function Loader() {
   const { progress } = useProgress();
@@ -437,6 +473,30 @@ export default function App() {
 
 
       </div>
+      {/* 頁腳：製作者名稱與下單連結 */}
+      <footer style={styles.footer}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <div style={{ fontWeight: 900 }}>製作：零點設計/0J</div>
+          <a
+            href="https://myship.7-11.com.tw/general/detail/GM2512250829928"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={styles.footerLink}
+          >
+            下單
+          </a>
+
+          <div style={styles.footerSmall}>線上訂製 • 這是一個開源專案，歡迎貢獻。</div>
+          <a
+            href="https://buymeacoffee.com/0rigind186u"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={styles.footerLink}
+          >
+            贊助
+          </a>
+        </div>
+      </footer>
     </div>
   );
 }
